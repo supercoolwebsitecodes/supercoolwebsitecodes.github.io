@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>supercoolwebsitecodes</title>
+  </head>
+  <body>
+    <a href="https://github.com/supercoolwebsitecodes/supercoolwebsitecodes.github.io">Check for new code (links back to repo)</a>
+    <label>Password:</label><br />
+    <input type="password" id="password" /><br /><br />
+
+    <label>Encrypted Text:</label><br />
+    <input type="text" id="text"/><br /><br />
+
+    <button onclick="decrypt()">Decrypt</button>
+
+    <h3>Output:</h3>
+    <pre id="output"></pre>
+  </body>
+</html>
+<script>
+function charCipherDecrypt(ciphertext, password) {
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  ciphertext = ciphertext.toUpperCase();
+  password = password.toUpperCase();
+
+  let result = "";
+
+  for (let i = 0; i < ciphertext.length; i++) {
+    const c = ciphertext.charCodeAt(i) - 65;
+    const p = password.charCodeAt(i % password.length) - 65;
+    const decryptedChar = alphabet[(c - p + 26) % 26];
+    result += decryptedChar;
+  }
+
+  return result;
+}
+
+
+function decrypt() {
+      const password = document.getElementById('password').value;
+      const ciphertext = document.getElementById('text').value;
+      if (!password) return;
+      if (!ciphertext) return;
+      
+      document.getElementById('output').textContent = charCipherDecrypt(ciphertext, password);
+    }
+</script>

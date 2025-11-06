@@ -1,0 +1,14 @@
+*.json
+node_modules/
+logs
+*.pid
+*.seed
+*.pid.lock
+*.log
+pids
+.npm
+.eslintcache
+.node_repl_history
+logs
+.env*
+npm-debug.log*
